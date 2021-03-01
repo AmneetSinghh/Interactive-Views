@@ -1,0 +1,61 @@
+html,
+body {
+    height: 100%;
+    background-color: #404040;
+}
+
+#mynetwork {
+    width: 50%;
+    height: 100%;
+    border: 1px solid lightgray;
+}
+
+#container2 {
+    width: 50%;
+    height: 100%;
+    border: 1px solid lightgray;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+#mynetwork2 {
+    width: 100%;
+    height: 100%;
+    color: darkgoldenrod;
+}
+
+#container {
+    width: 100%;
+    height: 70%;
+    background-color: white;
+    display: flex;
+    margin: 0 auto;
+}
+
+#generate-graph {
+    margin: auto;
+    display: block;
+}
+
+#solve {
+    margin: auto;
+    display: block;
+}
+
+.get_new_problem {
+    background-color: #483D8B;
+    border: 2px solid white;
+    border-radius: 5%;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    font-size: 13px;
+    /* margin: 4px 12px; */
+    opacity: 1;
+    transition: 0.3s;
+}
+
+.get_new_problem:hover {
+    opacity: 0.6
+}

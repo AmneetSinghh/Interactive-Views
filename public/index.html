@@ -1,0 +1,332 @@
+<!doctype html>
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/2.4.7/phaser.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+
+
+    <style>
+        body,
+        .quote-input {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        
+        .ac {
+            font-family: cursive;
+        }
+        
+        .container {
+            background-color: #483D8B;
+            padding: 1rem;
+            border-radius: .5rem;
+            width: 100%;
+            max-width: 96%;
+        }
+        
+        .quote-display {
+            margin-bottom: 1rem;
+            font-size: 20px;
+            margin-left: calc(1rem + 2px);
+            margin-right: calc(1rem + 2px);
+        }
+        
+        .quote-input {
+            background-color: transparent;
+            border: 2px solid #483D8B;
+            outline: none;
+            width: 100%;
+            height: 8rem;
+            margin: auto;
+            resize: none;
+            font-size: 20px;
+            padding: .5rem 1rem;
+            border-radius: .5rem;
+        }
+        
+        .quote-input:focus {
+            border-color: black;
+        }
+        
+        .correct {
+            color: green;
+        }
+        
+        .timer {
+            color: green;
+        }
+        
+        .temp {
+            font-family: 'Cinzel', serif;
+        }
+        
+        .incorrect {
+            color: red;
+            text-decoration: underline;
+        }
+        
+        html {
+            min-height: 100%;
+            position: relative;
+        }
+        
+        .container-fluid {
+            padding-top: 70px;
+            padding-bottom: 70px;
+        }
+        
+        .navbar {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            border: 0;
+            border-radius: 0;
+            margin-bottom: 0;
+            font-size: 12px;
+            letter-spacing: 5px;
+        }
+        
+        .navbar-nav li a:hover {
+            color: #1abc9c !important;
+        }
+        
+        .footer-padding {
+            padding-bottom: 60px;
+        }
+        
+        .footer {
+            position: absolute;
+            text-align: center;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            background-color: #1abc9c;
+        }
+        
+        .footer p {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #fff;
+        }
+        
+        .arena {
+            font-size: 58px;
+            color: #483D8B;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            text-align: center;
+        }
+        
+        .buttonload {
+            background-color: #483D8B;
+            /* Green background */
+            border: none;
+            border-radius: 3%;
+            /* Remove borders */
+            color: white;
+            /* White text */
+            padding: 12px 24px;
+            /* Some padding */
+            font-size: 16px;
+            align-items: center;
+            text-align: center;
+            /* Set a font-size */
+        }
+        /* Add a right margin to each icon */
+        
+        .fa {
+            margin-left: -12px;
+            margin-right: 8px;
+        }
+        
+        .lets {
+            font-size: 30px;
+            color: #483D8B;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            text-align: center;
+        }
+        
+        .singlerace {
+            background-color: #483D8B;
+            border: 3px solid white;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            font-size: 16px;
+            margin: 4px 2px;
+            opacity: 1;
+            transition: 0.3s;
+        }
+        
+        .singlerace:hover {
+            opacity: 0.6
+        }
+        
+        .deathrace {
+            background-color: #483D8B;
+            border: none;
+            border: 3px solid white;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            font-size: 16px;
+            margin: 4px 2px;
+            opacity: 1;
+            transition: 0.3s;
+        }
+        
+        .deathrace:hover {
+            opacity: 0.6
+        }
+        
+        .multiplayer {
+            background-color: #483D8B;
+            border: none;
+            border: 3px solid white;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            font-size: 16px;
+            margin: 4px 2px;
+            opacity: 1;
+            transition: 0.3s;
+        }
+        
+        .multiplayer:hover {
+            opacity: 0.6
+        }
+        
+        #race {
+            font-size: 50px;
+            color: #303030;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            text-align: center;
+        }
+        
+        #race1 {
+            font-size: 58px;
+            color: #483D8B;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            text-align: center;
+        }
+        
+        #race2 {
+            font-size: 50px;
+            color: #303030;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            text-align: center;
+        }
+        
+        .fa {
+            padding: 20px;
+            font-size: 30px;
+            width: 70px;
+            text-align: center;
+            text-decoration: none;
+            margin: 5px 2px;
+            border-radius: 50%;
+        }
+        
+        .fa:hover {
+            opacity: 0.7;
+        }
+        
+        .fa-linkedin {
+            background: #007bb5;
+            color: white;
+        }
+        
+        .fa-facebook {
+            background: #3B5998;
+            color: white;
+        }
+        
+        .fa-instagram {
+            background: #125688;
+            color: white;
+        }
+        
+        .fa-facebook {
+            background: #3B5998;
+            color: white;
+        }
+        
+        .fa-github {
+            background: black;
+            color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+    <script async src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.52.0/dist/phaser.min.js"></script>
+    <script src="js/screen.js" defer></script>
+    <nav class="navbar navbar-light " style="font-size: 20px; font-family: sans-serif; background-color: whitesmoke; text-align: left;">
+        <p style="font-family: 'Kaushan Script', cursive; padding:0px; margin: 0%;"> Interactive Views ❤</p>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6" style="background-color:lavender;">
+                <div id="mynetwork">
+                </div>
+
+            </div>
+
+            <div class="col-lg-6" style="background-color:#404040;">
+                <h1 class="arena">P<span id="race">roblem</span> <span id="race1">S</span><span id="race2">olving</span> </h1>
+                <div class="w3-panel w3-card-4">
+                    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <a href="/single"> <button class="singlerace">&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  Min Path (Graph) &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                    </a>
+                    <hr> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <a href="/death"> <button class="deathrace">&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Contact Search
+                         (Tries) &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  &nbsp &nbsp&nbsp&nbsp  </button>
+                    </a>
+                    <hr> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <a href="/multiplayer"> <button class="multiplayer">&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Min Jumps (DP)   &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                    </a>
+                </div>
+
+                <p>&nbsp</p>
+                <p>&nbsp</p>
+                <span id="connect">   &nbsp&nbsp &nbsp &nbsp&nbsp&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</span>
+                <a href="https://github.com/HarrySinghhh" class="fa fa-github"></a>
+                <a href="https://www.linkedin.com/in/amneet-singh/" class="fa fa-linkedin"></a>
+                <a href="https://www.facebook.com/harryamneet/" class="fa fa-facebook"></a>
+                <a href="https://www.instagram.com/harry_singhzz/?hl=en" class="fa fa-instagram"> </a>
+
+
+
+
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+    <br>
+    <nav class="navbar navbar-light " style="font-size: 20px; font-family: sans-serif; background-color: whitesmoke; text-align: left; ">
+        <p style="font-family: 'Kaushan Script', cursive; padding:0px; margin: 0%; "> Made by ❤Harry Singh</p>
+    </nav>
+</body>
+
+</html>
