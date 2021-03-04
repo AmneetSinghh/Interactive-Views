@@ -35,13 +35,13 @@ onload = function() {
 
     const PreloadState = {
         preload: function() {
-            game.load.spritesheet('mario', 'assets/player.png', 18, 20);
-            game.load.spritesheet('flag', 'assets/flag.png', 33, 168);
-            game.load.image('cloud', 'assets/cloud.png');
-            game.load.image('sun', 'assets/sun.png');
-            game.load.image('tile', 'assets/tile.png');
-            game.load.image('wave', 'assets/wave.png');
-            game.load.image('sea', 'assets/sea.png');
+            game.load.spritesheet('mario', '/assets/player.png', 18, 20);
+            game.load.spritesheet('flag', '/assets/flag.png', 33, 168);
+            game.load.image('cloud', '/assets/cloud.png');
+            game.load.image('sun', '/assets/sun.png');
+            game.load.image('tile', '/assets/tile.png');
+            game.load.image('wave', '/assets/wave.png');
+            game.load.image('sea', '/assets/sea.png');
         },
         create: function() {
             this.state.start("GameState")
