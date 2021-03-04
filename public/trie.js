@@ -25,10 +25,10 @@ class Trie {
         this.current = this.root;
 
         let init = [
-            ["Aarnav", "123456"],
-            ["Akul", "123546"],
-            ["Shriya", "123654"],
-            ["Prateek", "123465"]
+            ["Harry", "123456"],
+            ["heena", "123546"],
+            ["mayank", "123654"],
+            ["aditya", "123465"]
         ];
 
         for (let i = 0; i < init.length; i++) {
